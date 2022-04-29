@@ -1,12 +1,9 @@
 package com.dlithe.whatsapp.controller;
 
-import com.dlithe.whatsapp.dto.BankingUsersDetailsRequest;
+import com.dlithe.whatsapp.dto.BankingUsersDetailsResponse;
 import com.dlithe.whatsapp.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestContoller {
@@ -21,8 +18,13 @@ public class TestContoller {
     }
 
     @PostMapping("banking-user")
-    public String userRegister(@RequestBody  BankingUsersDetailsRequest bankingUsersDetailsRequest){
-        return testService.regisiterUsers(bankingUsersDetailsRequest);
+    public String userRegister(@RequestBody BankingUsersDetailsResponse bankingUsersDetailsResponse){
+        return testService.regisiterUsers(bankingUsersDetailsResponse);
+    }
+
+    @GetMapping("get-user-details/{userId}")
+        public BankingUsersDetailsResponse getUserDetails(@PathVariable int userId){
+        return testService.detailsOfUsers(userId);
     }
 
 }
