@@ -27,4 +27,11 @@ public class TestContoller {
         return testService.detailsOfUsers(userId);
     }
 
+    @GetMapping("fetch-user-details/{name}/{email}")
+    public BankingUsersDetailsResponse userDetails(@PathVariable String name,@PathVariable String email){
+        return testService.usersDetails(name,email);
+    }
+
+
+
 }
